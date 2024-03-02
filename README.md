@@ -6,6 +6,7 @@
 
 A command-line application to generate simple logos for project.  Logo can consist of simple shapes, up to three letters, and custom colors
 
+Tutorial video can be found at: https://drive.google.com/file/d/1CaqHV13R_lrL2KYl45l9RWvJRhOMyQy2/view
 ## Table of Contents
 
 - [Installation](#installation)
@@ -17,19 +18,28 @@ A command-line application to generate simple logos for project.  Logo can consi
 
 ## Installation
 
-npm i + node index.js
+To install the necessary dependencies, run the following command: npm install
+
+After installation, you can start the application by running: node index.js
+
 
 ## Usage
 
-Generate SVG files to use as a logo via command line after answering a few short questions.
+To generate a logo, follow these steps:
+
+1. Start the application with `node index.js`.
+2. Answer the prompts to choose your logo's text, text color, shape, and shape color.
+3. Once completed, your logo will be saved as an SVG file in the `examples/` directory.
+
 
 ## Contributing
 
-Not accepting contributions at this time.
+While direct contributions are not currently being accepted, feel free to fork the repository and suggest features or report bugs through GitHub issues.
+
 
 ## Tests
 
-N/A
+To test run "npm test" in the command-line.
 
 ## Authors
 
