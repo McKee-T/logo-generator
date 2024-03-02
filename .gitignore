@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+# Environment configuration files
+.env
+
+# Operating System generated files
+.DS_Store
+
+# Generated files
+examples/*.svg
