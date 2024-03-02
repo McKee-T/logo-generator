@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
+import { Circle, Triangle, Square } from './lib/shapes.js'; // Adjust the path as necessary
 
 // Prompting the user for input
 inquirer.prompt([
@@ -26,28 +27,33 @@ inquirer.prompt([
     message: 'Enter a color keyword or hexadecimal number for the shape color:',
   }
 ]).then(answers => {
-  // Generating the SVG content based on the user's input
-  const svgContent = generateSVG(answers);
+  const { text, textColor, shape, shapeColor } = answers;
+  let shapeObj;
 
-  // Saving the SVG to a file
-  fs.writeFile('logo.svg', svgContent, err => {
-    if (err) throw err;
-    console.log('Generated logo.svg');
-  });
-});
+  switch (shape) {
+    case 'circle':
+      shapeObj = new Circle(shapeColor);
+      break;
+    case 'triangle':
+      shapeObj = new Triangle(shapeColor);
+      break;
+    case 'square':
+      shapeObj = new Square(shapeColor);
+      break;
+  }
 
-// Function to generate the SVG content
-function generateSVG({ text, textColor, shape, shapeColor }) {
-  const shapeSVG = {
-    'circle': `<circle cx="150" cy="100" r="80" fill="${shapeColor}" />`,
-    'triangle': `<polygon points="150,20 230,180 70,180" fill="${shapeColor}" />`,
-    'square': `<rect x="50" y="50" width="200" height="200" fill="${shapeColor}" />`
-  }[shape];
+  const shapeSVG = shapeObj.render();
 
-  return `
+  const svgContent = `
     <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
       ${shapeSVG}
       <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="${textColor}" font-size="40">${text}</text>
     </svg>
   `;
-}
+
+  // Saving the SVG to a file in the examples/ directory
+  fs.writeFile('./examples/logo.svg', svgContent, err => {
+    if (err) throw err;
+    console.log('Generated examples/logo.svg');
+  });
+});
