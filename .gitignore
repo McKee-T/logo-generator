@@ -7,5 +7,4 @@ node_modules/
 # Operating System generated files
 .DS_Store
 
-# Generated files
-examples/*.svg
+
